@@ -97,3 +97,9 @@ video {
 	z-index: -1;
 	object-fit: cover; /* Añade esta línea para ajustar el tamaño manteniendo la proporción */
 }
+@media only screen and (max-width: 600px) {
+    /* Estilos específicos para dispositivos móviles */
+    video {
+        width: 100%;
+    }
+}
