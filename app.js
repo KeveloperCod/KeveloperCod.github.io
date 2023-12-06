@@ -47,32 +47,6 @@ function reloadMessage() {
 	}, 5000);
 }
 
-//------------------------- ---------------------------------
-/*
-function reloadMessage1() {
-	const message = document.getElementById("result");
-	const stateMessage = document.getElementById("state-message");
-	const loadingBox = document.querySelector(".loading-box");
-	const reloadButton = document.getElementById("reload-button");
-
-	// Ocultamos el botón durante la recarga
-	reloadButton.style.display = "none";
-
-	// Cambia el mensaje y muestra el estado de carga
-	message.innerHTML = "&nbsp;";
-	stateMessage.innerHTML = "cargando...";
-
-	const newLoadingBox = loadingBox.cloneNode(true);
-	loadingBox.parentNode.replaceChild(newLoadingBox, loadingBox);
-
-	// Simula una carga después de 2 segundos (puedes ajustar este tiempo)
-	setTimeout(function () {
-		message.innerHTML = "  mucho ♥ .";
-		stateMessage.innerHTML = "&nbsp;";
-		reloadButton.style.display = "inline-block";
-	}, 5000);
-}
-*/
 
 /*------ configuracion del video -----*/
 
@@ -86,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Configuración de intervalo para reiniciar el video cada 5 minutos
-	setInterval(restartVideo, 3000); // 300000 milisegundos = 5 minutos
+	setInterval(restartVideo, 5000); // 300000 milisegundos = 5 minutos
 
 	// Inicia el video automáticamente
 	video.play();
