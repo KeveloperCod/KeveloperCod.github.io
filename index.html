@@ -1,100 +1,20 @@
 <!DOCTYPE html>
+
+<link rel="stylesheet" href="estilos.css" />
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Abrazo virtual</title>
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				background-color: whitesmoke;
-				font-family: "Comic Neue";
-			}
-
-			:root {
-				--loading-width: 160px;
-				--loading-heigth: 23px;
-			}
-
-			body {
-				width: 100vw;
-				height: 100vh;
-				position: absolute;
-				/* background-color: yellowgreen; */
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			main {
-				text-align: center;
-				width: 90vw;
-			}
-
-			.box {
-				display: inline-block;
-				border: solid black 4px;
-				width: var(--loading-width);
-				background-color: white;
-			}
-
-			.loading-box {
-				height: var(--loading-heigth);
-				width: var(--loading-width);
-				background-color: blueviolet;
-				animation: loading 5s;
-			}
-
-			#state-message {
-				font-size: larger;
-				font-weight: bold;
-				color: rgb(109, 109, 109);
-			}
-
-			@keyframes loading {
-				0% {
-					width: 0;
-				}
-				100% {
-					width: var(--loading-width);
-				}
-			}
-
-			#title,
-			#result {
-				margin-top: 8px;
-				margin-bottom: 10px;
-			}
-
-			#me {
-				margin-top: 8px;
-				margin-bottom: 14px;
-			}
-
-			.box {
-				margin-top: 3px;
-			}
-
-			#reload-button {
-				display: none;
-				position: absolute;
-				margin-top: 60px;
-				left: 50%;
-				transform: translateX(-50%);
-				padding: 10px;
-				background-color: rgb(221, 80, 80);
-				color: white;
-				border: none;
-				border-radius: 10%;
-				cursor: pointer;
-			}
-		</style>
 	</head>
-
 	<body>
 		<main>
+			<!-- Video fondo  -->
+			<video loop="3s" muted>
+				<source src="multimedia/Where_Nico -x.mov" />
+			</video>
+			<!--   -->
 			<h3 id="state-message">cargando...</h3>
 			<h2 id="result">&nbsp;</h2>
 			<div>
@@ -104,46 +24,10 @@
 				<div class="loading-box"></div>
 			</div>
 			<button id="reload-button" onclick="reloadMessage()">
-				Recargar Mensaje
+				Presiona aqui
 			</button>
 
-			<script>
-				setTimeout(function () {
-					const message = document.getElementById("result");
-					message.innerHTML =
-						"Kiara Zavaleta Montañez, gracias por darle sentido a muchas cosas en mi vida , te mando un abrazo... que tengas un lindo dia. ";
-				}, 6200);
-				setTimeout(function () {
-					const message = document.getElementById("state-message");
-					const reloadButton = document.getElementById("reload-button");
-					reloadButton.style.display = "inline-block";
-					message.innerHTML = "&nbsp;";
-				}, 6000);
-				function reloadMessage() {
-					const message = document.getElementById("result");
-					const stateMessage = document.getElementById("state-message");
-					const loadingBox = document.querySelector(".loading-box");
-					const reloadButton = document.getElementById("reload-button");
-
-					// Ocultamos el botón durante la recarga
-					reloadButton.style.display = "none";
-
-					// Cambia el mensaje y muestra el estado de carga
-					message.innerHTML = "&nbsp;";
-					stateMessage.innerHTML = "cargando...";
-
-					const newLoadingBox = loadingBox.cloneNode(true);
-					loadingBox.parentNode.replaceChild(newLoadingBox, loadingBox);
-
-					// Simula una carga después de 2 segundos (puedes ajustar este tiempo)
-					setTimeout(function () {
-						message.innerHTML =
-							" Kiara Zavaleta Montañez, gracias por darle sentido a muchas cosas en mi vida, te mando un abrazo... que tengas un lindo día.";
-						stateMessage.innerHTML = "&nbsp;";
-						reloadButton.style.display = "inline-block";
-					}, 5000);
-				}
-			</script>
+			<script src="app.js"></script>
 		</main>
 	</body>
 </html>
