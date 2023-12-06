@@ -1,0 +1,99 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Comic Neue";
+}
+
+:root {
+	--loading-width: 160px;
+	--loading-heigth: 23px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Comic Neue";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden; /* Para evitar el desbordamiento del video fuera del cuerpo */
+	color: aliceblue;
+}
+main {
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box {
+	display: inline-block;
+	border: solid black 4px;
+	width: var(--loading-width);
+	background-color: white;
+}
+
+.loading-box {
+	height: var(--loading-heigth);
+	width: var(--loading-width);
+	background-color: blueviolet;
+	animation: loading 5s;
+}
+
+#state-message {
+	font-size: larger;
+	font-weight: bold;
+	color: rgb(109, 109, 109);
+}
+
+@keyframes loading {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: var(--loading-width);
+	}
+}
+
+#title,
+#result {
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+
+#me {
+	margin-top: 8px;
+	margin-bottom: 14px;
+}
+
+.box {
+	margin-top: 3px;
+}
+
+#reload-button {
+	display: none;
+	margin-top: 60px;
+	padding: 10px;
+	background-color: rgb(221, 80, 80);
+	color: white;
+	border: none;
+	border-radius: 10%;
+	cursor: pointer;
+	z-index: 1;
+}
+
+video {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	object-fit: cover; /* Añade esta línea para ajustar el tamaño manteniendo la proporción */
+}
