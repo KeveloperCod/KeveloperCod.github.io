@@ -1,7 +1,7 @@
 setTimeout(function () {
 	const message = document.getElementById("result");
 	message.innerHTML =
-		"Kiara Zavaleta Montañez, gracias por darle sentido a muchas cosas en mi vida , te mando un abrazo... que tengas un lindo dia. ";
+		"Gracias por estar a mi lado , te mando un abrazo... que tengas un lindo dia. ";
 }, 6200);
 
 setTimeout(function () {
