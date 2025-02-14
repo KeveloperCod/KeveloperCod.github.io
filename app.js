@@ -1,67 +1,61 @@
-setTimeout(function () {
-	const message = document.getElementById("result");
-	message.innerHTML =
-		"Kiara Zavaleta Montañez, gracias por darle sentido a muchas cosas en mi vida , te mando un abrazo... que tengas un lindo dia. ";
-}, 6200);
+// read custom message from query strings
+// Tutorial -> https://youtu.be/6ojp1iWUKw8
 
-setTimeout(function () {
-	const message = document.getElementById("state-message");
-	const reloadButton = document.getElementById("reload-button");
-	reloadButton.style.display = "inline-block";
-	message.innerHTML = "&nbsp;";
-}, 6000);
+const urlSearchParams = new URLSearchParams(window.location.search)
 
-function reloadMessage() {
-	const message = document.getElementById("result");
-	const stateMessage = document.getElementById("state-message");
-	const loadingBox = document.querySelector(".loading-box");
-	const reloadButton = document.getElementById("reload-button");
+const messageCustom = urlSearchParams.get('message')
 
-	// Ocultamos el botón durante la recarga
-	reloadButton.style.display = "none";
+if (messageCustom) {
 
-	// Cambia el mensaje y muestra el estado de carga
-	message.innerHTML = "&nbsp;";
-	stateMessage.innerHTML = "cargando...";
-
-	const newLoadingBox = loadingBox.cloneNode(true);
-	loadingBox.parentNode.replaceChild(newLoadingBox, loadingBox);
-
-	// Simula una carga después de 2 segundos (puedes ajustar este tiempo)
-	setTimeout(function () {
-		message.innerHTML = " Y no olvides que te quiero mucho ♥ .";
-		stateMessage.innerHTML = "&nbsp;";
-		reloadButton.style.display = "inline-block";
-
-		// Agrega un tercer mensaje después de 3 segundos, solo si se presionó el botón
-		reloadButton.addEventListener("click", function () {
-			setTimeout(function () {
-				message.innerHTML = "¡mucho!♥";
-				// Modifica el evento del botón para redirigir al inicio
-				reloadButton.removeEventListener("click", reloadMessage);
-				reloadButton.addEventListener("click", function () {
-					window.location.reload(); // Esto recargará la página, volviendo al mensaje inicial
-				});
-			}, 5000);
-		});
-	}, 5000);
+  const mainMessageElement = document.querySelector('#mainMessage')
+  mainMessageElement.textContent = decodeURI(messageCustom)
 }
 
+// the tutorial starts here
 
-/*------ configuracion del video -----*/
+const btnOpenElement = document.querySelector('#open')
+const btnCloseElement = document.querySelector('#close')
 
-document.addEventListener("DOMContentLoaded", function () {
-	const video = document.querySelector("video");
+btnCloseElement.disabled = true
 
-	// Función para reiniciar el video
-	function restartVideo() {
-		video.currentTime = 0;
-		video.play();
-	}
 
-	// Configuración de intervalo para reiniciar el video cada 5 minutos
-	setInterval(restartVideo, 5000); // 300000 milisegundos = 5 minutos
 
-	// Inicia el video automáticamente
-	video.play();
-});
+btnOpenElement.addEventListener('click', ()=> {
+  btnOpenElement.disabled = true
+  btnCloseElement.disabled = false
+  const coverElement = document.querySelector('.cover')
+  coverElement.classList.add('open-cover')
+
+  setTimeout(()=>{
+    //
+    coverElement.style.zIndex = -1
+    
+    const paperElement = document.querySelector('.paper')
+    paperElement.classList.remove('close-paper')
+    paperElement.classList.add('open-paper')
+
+    // animacion del corazón
+    const heartElement = document.querySelector('.heart')
+    heartElement.style.display = 'block'
+  
+  }, 500)
+
+})
+btnCloseElement.addEventListener('click', ()=> {
+  btnOpenElement.disabled = false
+  btnCloseElement.disabled = true
+
+  const coverElement = document.querySelector('.cover')
+  const paperElement = document.querySelector('.paper')
+  paperElement.classList.remove('open-paper')
+  paperElement.classList.add('close-paper')
+  
+  setTimeout(()=>{
+    coverElement.style.zIndex = 0
+    coverElement.classList.remove('open-cover')
+
+    // animacion del corazón
+    const heartElement = document.querySelector('.heart')
+    heartElement.style.display = 'none'
+  },500)
+})
