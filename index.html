@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-
-<link rel="stylesheet" href="estilos.css" />
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Abrazo virtual</title>
-	</head>
-	<body>
-		<main>
-			<!-- Video fondo  -->
-			<video autoplay loop="3s" muted playsinline preload="auto">
-				<source src="multimedia/Where_Nico -x - Trim.mp4" type="video/mp4" />
-			</video>
-			<!--   -->
-			<h3 id="state-message">cargando...</h3>
-			<h2 id="result">&nbsp;</h2>
-			<div>
-				<img id="me" src="penguin.svg" alt="" />
-			</div>
-			<div class="box">
-				<div class="loading-box"></div>
-			</div>
-			<button id="reload-button" onclick="reloadMessage()">
-				Presiona aqui
-			</button>
-
-			<script src="app.js"></script>
-		</main>
-	</body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div class="container-letter">
+      <div class="cover"></div>
+      <span class="heart">♥</span>
+      <p class="paper" id="mainMessage">
+Se acerca el 14 de febrero y me hubieras gustado pasarla contigo, pero a pesar de todo quería preguntarte algo especial… 🌹✨¿Te gustaría ser mi San Valentín este año? 💌 Espero tu respuesta con ilusiónn <br>
+Danny 💕
+      </p>
+      <div class="letter"></div>
+    </div>
+    <div class="options">
+      <button id="open">Abrir</button>
+      <button id="close">Cerrar</butto>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
