@@ -1,105 +1,168 @@
+/* reset css */
+
 * {
-	margin: 0;
-	padding: 0;
-	font-family: "Comic Neue";
-}
-
-:root {
-	--loading-width: 160px;
-	--loading-heigth: 23px;
-}
-
-body {
-	margin: 0;
-	padding: 0;
-	font-family: "Comic Neue";
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	overflow: hidden; /* Para evitar el desbordamiento del video fuera del cuerpo */
-	color: aliceblue;
-}
-main {
-	text-align: center;
-	width: 100vw;
-	height: 100vh;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.box {
-	display: inline-block;
-	border: solid black 4px;
-	width: var(--loading-width);
-	background-color: white;
-}
-
-.loading-box {
-	height: var(--loading-heigth);
-	width: var(--loading-width);
-	background-color: blueviolet;
-	animation: loading 5s;
-}
-
-#state-message {
-	font-size: larger;
-	font-weight: bold;
-	color: rgb(109, 109, 109);
-}
-
-@keyframes loading {
-	0% {
-		width: 0;
-	}
-	100% {
-		width: var(--loading-width);
-	}
-}
-
-#title,
-#result {
-	margin-top: 8px;
-	margin-bottom: 10px;
-}
-
-#me {
-	margin-top: 8px;
-	margin-bottom: 14px;
-}
-
-.box {
-	margin-top: 3px;
-}
-
-#reload-button {
-	display: none;
-	margin-top: 60px;
-	padding: 10px;
-	background-color: rgb(221, 80, 80);
-	color: white;
-	border: none;
-	border-radius: 10%;
-	cursor: pointer;
-	z-index: 1;
-}
-
-video {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	object-fit: cover; /* Añade esta línea para ajustar el tamaño manteniendo la proporción */
-}
-@media only screen and (max-width: 600px) {
-    /* Estilos específicos para dispositivos móviles */
-    video {
-        width: 100%;
+    min-width: 0;
+    font: inherit;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  img,
+  video,
+  svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100dvh;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  
+  /* styles */
+  /* TODO: Cambiar la fuente
+  
+  * {
+    font-family: comic-sans;
+  } */
+  
+  body {
+    background-color: #fad7df;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container-letter {
+    position: relative;
+  }
+  
+  .cover {
+    position: absolute;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-top: 100px solid #fe3334;
+    border-bottom: 100px solid transparent;
+  
+    /*  */
+    transition: transform .75s;
+    transform-origin: top;
+  }
+  
+  .paper {
+    position: absolute;
+    padding: 0.5rem;
+    line-height: 2rem;
+    right: 5px;
+    /*  */
+    z-index: -1;
+    background: white;
+    width: 390px;
+    height: 180px;
+  
+    transition: all .75s;
+  }
+  
+  .letter {
+    border-left: 200px solid #ff989e;
+    border-right: 200px solid #ff989e;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid #ff858a;
+  }
+  
+  .options {
+    display: flex;
+    gap: 5rem;
+  
+    & button {
+      color: #ff3234;
+      font-weight: 600;
+      border-radius: 3px;
+      background: #fad7df;
+      padding: 0.5rem 1rem;
+      border: 1px solid #fe3334;
+      cursor: pointer;
     }
-}
+  
+    & button:hover {
+      background: #ff989e;
+      color: white;
+    }
+  }
+  
+  .open-cover {
+    transform: rotatex(180deg);
+  }
+  
+  .open-paper {
+    animation: openPaper .5s forwards;
+  }
+  
+  @keyframes openPaper {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -170px;
+    }
+  }
+  
+  .close-paper {
+    animation: closePaper .5s forwards;
+  }
+  
+  @keyframes closePaper {
+    0% {
+      top: -120px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  .heart {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 46.5%;
+    margin: auto;
+    font-size: 3rem;
+  
+    color: #fe3334;
+  
+    animation: crecer 1s forwards ;
+  }
+  
+  @keyframes crecer {
+    0% {
+      scale: 1;
+      opacity: 1;
+    }
+    100% {
+      scale: 3;
+      opacity: 0;
+  
+    }
+  }
