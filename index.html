@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- Video de fondo -->
-    <video id="background-video" autoplay muted loop>
+    <video id="background-video" autoplay muted loop playsinline>
       <source
         src="multimedia/Recorrido por el Museo Larco en Perú - cop.mp4"
         type="video/mp4"
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Audio -->
-    <audio id="background-music" loop>
+    <audio id="background-music" loop muted>
       <source
         src="multimedia/Beéle, Ovy On The Drums - Mi Refe (Video Oficial).mp3"
         type="audio/mp3"
@@ -60,7 +60,15 @@
 
         checkbox.addEventListener("change", function () {
           if (this.checked) {
-            audio.play(); // Reproduce la canción cuando la carta se abre
+            audio.muted = false; // Quita el silencio
+            audio
+              .play() // Reproduce la canción cuando la carta se abre
+              .then(() => {
+                console.log("La canción se está reproduciendo.");
+              })
+              .catch((error) => {
+                console.error("Error al reproducir la canción:", error);
+              });
           } else {
             audio.pause(); // Pausa la canción cuando la carta se cierra
             audio.currentTime = 0; // Reinicia la canción al principio
