@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Invitacion</title>
   </head>
   <body>
     <!-- Video de fondo -->
-    <video id="background-video" autoplay muted loop playsinline>
+    <video id="background-video" autoplay muted loop>
       <source
         src="multimedia/Recorrido por el Museo Larco en Perú - cop.mp4"
         type="video/mp4"
@@ -31,6 +31,17 @@
         <div class="eyes"></div>
       </div>
     </div>
+
+    <!-- Audio -->
+    <audio id="background-music" loop>
+      <source
+        src="multimedia/Beéle, Ovy On The Drums - Mi Refe (Video Oficial).mp3"
+        type="audio/mp3"
+      />
+      Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- Confeti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.1/dist/confetti.browser.min.js"></script>
 
     <script>
@@ -41,6 +52,21 @@
           origin: { x: 0.5, y: 0.5 },
         });
       }, 2000);
+
+      // Controlar la reproducción de la canción
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkbox = document.getElementById("open");
+        const audio = document.getElementById("background-music");
+
+        checkbox.addEventListener("change", function () {
+          if (this.checked) {
+            audio.play(); // Reproduce la canción cuando la carta se abre
+          } else {
+            audio.pause(); // Pausa la canción cuando la carta se cierra
+            audio.currentTime = 0; // Reinicia la canción al principio
+          }
+        });
+      });
     </script>
   </body>
 </html>
