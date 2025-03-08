@@ -1,168 +1,256 @@
-/* reset css */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
-* {
-    min-width: 0;
-    font: inherit;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Cambia a transparente */
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+#background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1; 
+  opacity: 0.5; 
+  transition: opacity 1s ease-in-out;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.651);
+  z-index: -1; 
+}
+
+input#open {
+  display: none;
+}
+
+.valentines-day-card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: .3s;
+  z-index: 1; 
+}
+
+.card-front {
+  position: relative;
+  background-color: #fff0f3;
+  width: 300px;
+  height: 300px;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .15), 30px 0 50px rgba(0, 0, 0, 0.3);
+  transition: .35s;
+}
+
+.card-front:before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background-color: #d04e4e;
+  top: 10px;
+  left: 10px;
+}
+
+.card-inside {
+  position: absolute;
+  background-color: #fff0f3;
+  background-image: url('multimedia/Kiara_Invitacion.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.22), 100px 20px 100px rgba(0, 0, 0, 0.1);
+}
+
+.open {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  z-index: 6;
+  cursor: pointer;
+}
+
+#open:checked ~ .card-front {
+  transform: rotateY(-155deg);
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1);
+}
+
+#open:checked ~ .card-front:before {
+  z-index: 5;
+  background-color: #fff0f3;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .1), 30px 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.note {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-color: #fff0f3;
+  top: 75px;
+  left: 50px;
+  color: #333;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+}
+
+.note:before, .note:after {
+  position: absolute;
+  content: "";
+  background-color: #ba1c1c;
+  width: 40px;
+  height: 40px;
+}
+
+.note:before {
+  transform: rotate(-45deg);
+  top: -20px;
+  left: 80px;
+}
+
+.note:after {
+  border-radius: 50%;
+  top: -35px;
+  left: 65px;
+  box-shadow: 30px 0 #ba1c1c;
+}
+
+.text-one {
+  position: absolute;
+  color: #333;
+  font-size: 30px;
+  top: 30px;
+  width: 300px;
+  text-align: center;
+}
+
+.text-one:before, .text-one:after {
+  position: absolute;
+  left: 5px;
+  text-align: center;
+  width: 300px;
+}
+
+.text-one:before {
+  content: "";
+  top: 70px;
+  color: #d04e4e;
+}
+
+.text-one:after {
+  content: "";
+  top: 35px;
+}
+
+.heart {
+  position: relative;
+  background-color: #d04e4e;
+  height: 40px;
+  width: 40px;
+  top: 220px;
+  left: 190px;
+  transform: rotate(-45deg);
+  animation: .9s beat infinite;
+}
+
+.heart:before, .heart:after {
+  content: "";
+  background-color: #d04e4e;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+}
+
+.heart:before {
+  top: -20px;
+  left: 0;
+}
+
+.heart:after {
+  left: 20px;
+  top: 0;
+}
+
+.smile {
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background-color: #333;
+  z-index: 1;
+  border-radius: 0 0 100px 100px;
+  top: 240px;
+  left: 196px;
+  overflow: hidden;
+}
+
+.smile:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: #030202;
+  top: 3px;
+  left: 3px;
+}
+
+.eyes {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #333;
+  width: 8px;
+  height: 8px;
+  z-index: 1;
+  top: 222px;
+  left: 225px;
+  box-shadow: -35px 0 #333;
+  transform-origin: 50%;
+  animation: close 2s infinite;
+}
+
+@keyframes close {
+  0%, 100% {
+    transform: scale(1, .05);
   }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  5%, 95% {
+    transform: scale(1, 1);
   }
-  
-  img,
-  video,
-  svg {
-    display: block;
-    height: auto;
-    max-width: 100%;
+}
+
+@keyframes beat {
+  0%, 40%, 100% {
+    transform: scale(1) rotate(-45deg);
   }
-  
-  body {
-    margin: 0;
-    min-height: 100dvh;
+  25%, 60% {
+    transform: scale(1.1) rotate(-45deg);
   }
-  
-  h1,
-  h2,
-  h3 {
-    text-wrap: balance;
-  }
-  
-  p {
-    text-wrap: pretty;
-  }
-  
-  /* styles */
-  /* TODO: Cambiar la fuente
-  
-  * {
-    font-family: comic-sans;
-  } */
-  
-  body {
-    background-color: #fad7df;
-  }
-  
-  main {
-    display: flex;
-    flex-direction: column;
-  
-    gap: 3rem;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container-letter {
-    position: relative;
-  }
-  
-  .cover {
-    position: absolute;
-    border-left: 200px solid transparent;
-    border-right: 200px solid transparent;
-    border-top: 100px solid #fe3334;
-    border-bottom: 100px solid transparent;
-  
-    /*  */
-    transition: transform .75s;
-    transform-origin: top;
-  }
-  
-  .paper {
-    position: absolute;
-    padding: 0.5rem;
-    line-height: 2rem;
-    right: 5px;
-    /*  */
-    z-index: -1;
-    background: white;
-    width: 390px;
-    height: 180px;
-  
-    transition: all .75s;
-  }
-  
-  .letter {
-    border-left: 200px solid #ff989e;
-    border-right: 200px solid #ff989e;
-    border-top: 100px solid transparent;
-    border-bottom: 100px solid #ff858a;
-  }
-  
-  .options {
-    display: flex;
-    gap: 5rem;
-  
-    & button {
-      color: #ff3234;
-      font-weight: 600;
-      border-radius: 3px;
-      background: #fad7df;
-      padding: 0.5rem 1rem;
-      border: 1px solid #fe3334;
-      cursor: pointer;
-    }
-  
-    & button:hover {
-      background: #ff989e;
-      color: white;
-    }
-  }
-  
-  .open-cover {
-    transform: rotatex(180deg);
-  }
-  
-  .open-paper {
-    animation: openPaper .5s forwards;
-  }
-  
-  @keyframes openPaper {
-    0% {
-      top: 0;
-    }
-    100% {
-      top: -170px;
-    }
-  }
-  
-  .close-paper {
-    animation: closePaper .5s forwards;
-  }
-  
-  @keyframes closePaper {
-    0% {
-      top: -120px;
-    }
-    100% {
-      top: 0;
-    }
-  }
-  
-  .heart {
-    display: none;
-    position: absolute;
-    top: 20%;
-    left: 46.5%;
-    margin: auto;
-    font-size: 3rem;
-  
-    color: #fe3334;
-  
-    animation: crecer 1s forwards ;
-  }
-  
-  @keyframes crecer {
-    0% {
-      scale: 1;
-      opacity: 1;
-    }
-    100% {
-      scale: 3;
-      opacity: 0;
-  
-    }
-  }
+}
