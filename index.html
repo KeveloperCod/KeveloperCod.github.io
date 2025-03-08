@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carta</title>
-  <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-  <main>
-    <div class="container-letter">
-      <div class="cover"></div>
-      <span class="heart">♥</span>
-      <p class="paper" id="mainMessage">
-Se acerca el 14 de febrero y me hubieras gustado pasarla contigo, pero a pesar de todo quería preguntarte algo especial… 🌹✨¿Te gustaría ser mi San Valentín este año? 💌 Espero tu respuesta con ilusiónn <br>
-Danny 💕
-      </p>
-      <div class="letter"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilos.css" />
+    <title>Invitacion</title>
+  </head>
+  <body>
+    <!-- Video de fondo -->
+    <video id="background-video" autoplay muted loop>
+      <source
+        src="multimedia/Recorrido por el Museo Larco en Perú - cop.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="overlay"></div>
+
+    <!-- Tarjeta de San Valentín -->
+    <div class="valentines-day-card">
+      <input id="open" type="checkbox" />
+      <label class="open" for="open"></label>
+      <div class="card-front">
+        <div class="note">Presiona para Abrir</div>
+      </div>
+
+      <div class="card-inside">
+        <div class="text-one"></div>
+        <div class="heart"></div>
+        <div class="smile"></div>
+        <div class="eyes"></div>
+      </div>
     </div>
-    <div class="options">
-      <button id="open">Abrir</button>
-      <button id="close">Cerrar</butto>
-    </div>
-  </main>
-  <script src="app.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+      setInterval(() => {
+        confetti({
+          particleCount: 100,
+          spread: 60,
+          origin: { x: 0.5, y: 0.5 },
+        });
+      }, 2000);
+    </script>
+  </body>
 </html>
