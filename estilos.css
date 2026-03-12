@@ -1,256 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap');
+
+:root {
+  --gold: #c9a84c;
+  --gold-dim: rgba(201,168,76,0.3);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent; /* Cambia a transparente */
-  font-family: 'Mochiy Pop P One', sans-serif;
+  background-color: #0a0806;
+  overflow: hidden;
 }
 
 #background-video {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  z-index: -1; 
-  opacity: 0.5; 
-  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  opacity: 0.6;
 }
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.651);
-  z-index: -1; 
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
-input#open {
-  display: none;
-}
+input#open { display: none; }
 
+/* ── Contenedor: igual al original que funcionaba ── */
 .valentines-day-card {
   position: relative;
   width: 300px;
   height: 300px;
   transform-style: preserve-3d;
-  transform: perspective(2500px);
+  transform: perspective(2500px);   /* perspective en el propio elemento */
   transition: .3s;
-  z-index: 1; 
+  z-index: 2;
 }
 
-.card-front {
-  position: relative;
-  background-color: #fff0f3;
-  width: 300px;
-  height: 300px;
-  transform-origin: left;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .15), 30px 0 50px rgba(0, 0, 0, 0.3);
-  transition: .35s;
-}
-
-.card-front:before {
-  content: "";
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  background-color: #d04e4e;
-  top: 10px;
-  left: 10px;
-}
-
+/* ── INTERIOR ── */
 .card-inside {
   position: absolute;
-  background-color: #fff0f3;
-  background-image: url('multimedia/Kiara_Invitacion.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  left: 0; top: 0;
   width: 300px;
   height: 300px;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.22), 100px 20px 100px rgba(0, 0, 0, 0.1);
+  z-index: -1;                       /* detrás de la tapa */
+  overflow: hidden;
+  background-image: url('multimedia/Kiara_Invitacion.jpg');
+  background-size: 100% auto;        /* ancho completo, alto proporcional */
+  background-position: center top;   /* ancla arriba para ver el contenido */
+  background-repeat: no-repeat;
+  background-color: #f0ece5;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,0.22),
+              100px 20px 100px rgba(0,0,0,0.1);
 }
 
+/* ── CLICK AREA ── */
 .open {
   position: absolute;
+  left: 0; top: 0;
   width: 300px;
   height: 300px;
-  left: 0;
-  top: 0;
-  background-color: transparent;
   z-index: 6;
   cursor: pointer;
+  background: transparent;
 }
 
-#open:checked ~ .card-front {
-  transform: rotateY(-155deg);
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1);
-}
-
-#open:checked ~ .card-front:before {
-  z-index: 5;
-  background-color: #fff0f3;
+/* ── TAPA DELANTERA ── */
+.card-front {
+  position: relative;               /* relative como en el original */
   width: 300px;
   height: 300px;
-  top: 0;
-  left: 0;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .1), 30px 0 50px rgba(0, 0, 0, 0.1);
-}
-
-.note {
-  position: relative;
-  width: 200px;
-  height: 150px;
-  background-color: #fff0f3;
-  top: 75px;
-  left: 50px;
-  color: #333;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
-}
-
-.note:before, .note:after {
-  position: absolute;
-  content: "";
-  background-color: #ba1c1c;
-  width: 40px;
-  height: 40px;
-}
-
-.note:before {
-  transform: rotate(-45deg);
-  top: -20px;
-  left: 80px;
-}
-
-.note:after {
-  border-radius: 50%;
-  top: -35px;
-  left: 65px;
-  box-shadow: 30px 0 #ba1c1c;
-}
-
-.text-one {
-  position: absolute;
-  color: #333;
-  font-size: 30px;
-  top: 30px;
-  width: 300px;
-  text-align: center;
-}
-
-.text-one:before, .text-one:after {
-  position: absolute;
-  left: 5px;
-  text-align: center;
-  width: 300px;
-}
-
-.text-one:before {
-  content: "";
-  top: 70px;
-  color: #d04e4e;
-}
-
-.text-one:after {
-  content: "";
-  top: 35px;
-}
-
-.heart {
-  position: relative;
-  background-color: #d04e4e;
-  height: 40px;
-  width: 40px;
-  top: 220px;
-  left: 190px;
-  transform: rotate(-45deg);
-  animation: .9s beat infinite;
-}
-
-.heart:before, .heart:after {
-  content: "";
-  background-color: #d04e4e;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-}
-
-.heart:before {
-  top: -20px;
-  left: 0;
-}
-
-.heart:after {
-  left: 20px;
-  top: 0;
-}
-
-.smile {
-  position: absolute;
-  width: 30px;
-  height: 10px;
-  background-color: #333;
-  z-index: 1;
-  border-radius: 0 0 100px 100px;
-  top: 240px;
-  left: 196px;
+  background: linear-gradient(145deg, #1e1508 0%, #0f0b05 55%, #1a1308 100%);
+  transform-origin: left;
+  transition: transform .45s cubic-bezier(0.645, 0.045, 0.355, 1.000),
+              box-shadow .45s ease;
+  box-shadow:
+    inset 100px 20px 100px rgba(0,0,0,0.25),
+    30px 0 50px rgba(0,0,0,0.5);
   overflow: hidden;
 }
 
-.smile:before {
-  content: "";
+/* Marcos dorados */
+.card-front::before {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  background-color: #030202;
-  top: 3px;
-  left: 3px;
-}
-
-.eyes {
-  position: absolute;
-  border-radius: 50%;
-  background-color: #333;
-  width: 8px;
-  height: 8px;
+  inset: 9px;
+  border: 1px solid var(--gold-dim);
+  pointer-events: none;
   z-index: 1;
-  top: 222px;
-  left: 225px;
-  box-shadow: -35px 0 #333;
-  transform-origin: 50%;
-  animation: close 2s infinite;
+}
+.card-front::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(201,168,76,0.1);
+  pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes close {
-  0%, 100% {
-    transform: scale(1, .05);
-  }
-  5%, 95% {
-    transform: scale(1, 1);
-  }
+/* Contenido portada */
+.front-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 2;
 }
 
-@keyframes beat {
-  0%, 40%, 100% {
-    transform: scale(1) rotate(-45deg);
-  }
-  25%, 60% {
-    transform: scale(1.1) rotate(-45deg);
-  }
+/* Cuando la tapa abre, el texto queda espejado — corregimos */
+#open:checked ~ .card-front .front-content {
+  transform: scaleX(-1);
+}
+
+.front-ornament { width: 96px; height: 96px; }
+
+.front-divider {
+  width: 48px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.front-title {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.front-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(201,168,76,0.45);
+  letter-spacing: 2px;
+}
+
+/* Texto dinamico: "Toca para abrir" <-> "Toca para cerrar" */
+.txt-close { display: none; }
+.txt-open  { display: block; }
+
+#open:checked ~ .card-front .txt-close { display: block; }
+#open:checked ~ .card-front .txt-open  { display: none; }
+
+/* Label sobre el interior para cerrar tocando la imagen */
+.card-inside-label {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* ── APERTURA ── */
+#open:checked ~ .card-front {
+  transform: rotateY(-155deg);
+  box-shadow:
+    inset 100px 20px 100px rgba(0,0,0,0.13),
+    30px 0 50px rgba(0,0,0,0.1);
 }
