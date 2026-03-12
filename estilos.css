@@ -3,6 +3,8 @@
 :root {
   --gold: #c9a84c;
   --gold-dim: rgba(201,168,76,0.3);
+  --w: 300px;
+  --h: 400px;   /* portrait 3:4 para que encaje la imagen completa */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,13 +37,13 @@ body {
 
 input#open { display: none; }
 
-/* ── Contenedor: igual al original que funcionaba ── */
+/* ── Contenedor ── */
 .valentines-day-card {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: var(--w);
+  height: var(--h);
   transform-style: preserve-3d;
-  transform: perspective(2500px);   /* perspective en el propio elemento */
+  transform: perspective(2500px);
   transition: .3s;
   z-index: 2;
 }
@@ -50,13 +52,13 @@ input#open { display: none; }
 .card-inside {
   position: absolute;
   left: 0; top: 0;
-  width: 300px;
-  height: 300px;
-  z-index: -1;                       /* detrás de la tapa */
+  width: var(--w);
+  height: var(--h);
+  z-index: -1;
   overflow: hidden;
   background-image: url('multimedia/Kiara_Invitacion.jpg');
-  background-size: 100% auto;        /* ancho completo, alto proporcional */
-  background-position: center top;   /* ancla arriba para ver el contenido */
+  background-size: cover;          /* cubre todo el área */
+  background-position: center top; /* empieza desde arriba */
   background-repeat: no-repeat;
   background-color: #f0ece5;
   box-shadow: inset 100px 20px 100px rgba(0,0,0,0.22),
@@ -67,8 +69,8 @@ input#open { display: none; }
 .open {
   position: absolute;
   left: 0; top: 0;
-  width: 300px;
-  height: 300px;
+  width: var(--w);
+  height: var(--h);
   z-index: 6;
   cursor: pointer;
   background: transparent;
@@ -76,11 +78,11 @@ input#open { display: none; }
 
 /* ── TAPA DELANTERA ── */
 .card-front {
-  position: relative;               /* relative como en el original */
-  width: 300px;
-  height: 300px;
+  position: relative;
+  width: var(--w);
+  height: var(--h);
   background: linear-gradient(145deg, #1e1508 0%, #0f0b05 55%, #1a1308 100%);
-  transform-origin: left;
+  transform-origin: left center;
   transition: transform .45s cubic-bezier(0.645, 0.045, 0.355, 1.000),
               box-shadow .45s ease;
   box-shadow:
@@ -119,7 +121,7 @@ input#open { display: none; }
   z-index: 2;
 }
 
-/* Cuando la tapa abre, el texto queda espejado — corregimos */
+/* Corrección espejo al abrir */
 #open:checked ~ .card-front .front-content {
   transform: scaleX(-1);
 }
@@ -149,14 +151,14 @@ input#open { display: none; }
   letter-spacing: 2px;
 }
 
-/* Texto dinamico: "Toca para abrir" <-> "Toca para cerrar" */
+/* Texto dinámico */
 .txt-close { display: none; }
 .txt-open  { display: block; }
 
 #open:checked ~ .card-front .txt-close { display: block; }
 #open:checked ~ .card-front .txt-open  { display: none; }
 
-/* Label sobre el interior para cerrar tocando la imagen */
+/* Label sobre el interior para cerrar */
 .card-inside-label {
   position: absolute;
   inset: 0;
