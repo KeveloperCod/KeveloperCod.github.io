@@ -300,7 +300,7 @@ html,body{
 <!-- ════════════════════════════════════════════
      VIDEO DE FONDO
 ════════════════════════════════════════════ -->
-<video id="background-video" autoplay muted loop>
+<video id="background-video" autoplay muted loop playsinline webkit-playsinline>
   <source src="multimedia/Recorrido por el Museo Larco en Perú - cop.mp4" type="video/mp4">
 </video>
 
@@ -868,6 +868,27 @@ document.addEventListener('DOMContentLoaded',()=>{
       invitationWrap.classList.add('visible');
       window.scrollTo(0,0);
     }, 300);
+  });
+
+  // Detener música cuando se sale de la página
+  window.addEventListener('beforeunload', ()=>{
+    const music = document.getElementById('background-music');
+    if(music) music.pause();
+  });
+
+  // Pausar música cuando el tab no está visible
+  document.addEventListener('visibilitychange', ()=>{
+    const music = document.getElementById('background-music');
+    if(!music) return;
+    if(document.hidden){
+      music.pause();
+    }
+  });
+
+  // Pausar música cuando se cierra o cambia de página
+  window.addEventListener('pagehide', ()=>{
+    const music = document.getElementById('background-music');
+    if(music) music.pause();
   });
 });
 </script>
