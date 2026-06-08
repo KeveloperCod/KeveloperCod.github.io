@@ -14,6 +14,7 @@ html,body{
   width:100%;min-height:100vh;
   font-family:'Cormorant Garamond',serif;
   overflow-x:hidden;
+  overflow-y:hidden;
 }
 
 /* ══════════════════════════════════════════
@@ -93,13 +94,15 @@ html,body{
   margin-top:18px;
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:13px;
+  font-size:16px;
+  font-weight:300;
   letter-spacing:4px;
-  color:rgba(201,168,76,0.5);
+  color:rgba(201,168,76,0.85);
   animation:blink-hint 2.4s ease-in-out infinite;
+  text-shadow:0 0 8px rgba(201,168,76,0.4);
 }
 @keyframes blink-hint{
-  0%,80%{opacity:0.58;}80%{opacity:0.128;}
+  0%,80%{opacity:0.75;}80%{opacity:0.35;}
 }
 
 /* Partículas CSS flotantes de fondo */
@@ -146,6 +149,8 @@ html,body{
   pointer-events:all;
   animation:dropCard .7s cubic-bezier(.34,.69,.63,1) forwards;
 }
+
+
 
 /* ── Card ── */
 .card{
@@ -859,6 +864,10 @@ document.addEventListener('DOMContentLoaded',()=>{
       music.currentTime = 2;
       music.play().catch(err => console.log('Audio play failed:', err));
     }
+
+    // Permitir scroll en html y body (importante para mobile)
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
 
     // 1. Ocultar pantalla de lazos con fade
     ribbonScreen.classList.add('fade-out');
