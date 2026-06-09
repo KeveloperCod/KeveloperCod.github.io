@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Astrid & Waldir · 18.07.2026</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -178,6 +178,231 @@
           transform: translateY(0) scale(1);
           opacity: 1;
         }
+      }
+
+      /* ══════════════════════════════════════════
+     CAPA 2 — PORTADA (cover card)
+  ══════════════════════════════════════════ */
+      #cover-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s;
+      }
+      #cover-screen.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+      #cover-screen.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .cover-card {
+        width: min(340px, 90vw);
+        background: rgba(253, 248, 240, 0.96);
+        border: 1px solid #c9a87c;
+        border-radius: 2px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 36px 28px 32px;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Florales decorativos en esquinas de la portada */
+      .cover-floral-tl,
+      .cover-floral-tr {
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 80px;
+        pointer-events: none;
+      }
+      .cover-floral-tl {
+        left: 0;
+      }
+      .cover-floral-tr {
+        right: 0;
+        transform: scaleX(-1);
+      }
+
+      .cover-sello {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .cover-initials {
+        font-family: "Cinzel", serif;
+        font-weight: 600;
+        font-size: 64px;
+        color: #7a2020;
+        letter-spacing: -2px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .cover-initials-sep {
+        font-family: "Cinzel", serif;
+        font-weight: 300;
+        font-size: 48px;
+        color: #c9a87c;
+        opacity: 0.7;
+      }
+
+      .cover-names-sub {
+        font-family: "Cinzel", serif;
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: #8b5a2b;
+        text-transform: uppercase;
+        margin-top: 8px;
+        margin-bottom: 20px;
+      }
+
+      .cover-divider {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .cover-divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #c9a87c,
+          transparent
+        );
+      }
+      .cover-divider svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      .cover-date {
+        font-family: "Cinzel", serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: #5c3a1e;
+        letter-spacing: 6px;
+        margin-bottom: 6px;
+      }
+      .cover-day {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 13px;
+        color: #8b5a2b;
+        letter-spacing: 2px;
+        margin-bottom: 28px;
+      }
+
+      /* Ilustración floral central de portada */
+      .cover-botanical {
+        width: 130px;
+        height: 100px;
+        margin-bottom: 24px;
+      }
+
+      .cover-tagline {
+        font-family: "Cinzel", serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        color: #8b5a2b;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .cover-tagline-heart {
+        color: #7a2020;
+        font-size: 11px;
+      }
+      .cover-sub-text {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 13px;
+        color: #7a5030;
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .cover-btn {
+        width: 100%;
+        padding: 14px 20px;
+        background: #fdf6ee;
+        border: 1.5px solid #7a2020;
+        font-family: "Cinzel", serif;
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: #7a2020;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 1px;
+      }
+      .cover-btn:hover {
+        background: #7a2020;
+        color: #fdf6ee;
+      }
+      .cover-btn svg {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.3s;
+      }
+      .cover-btn:hover svg {
+        transform: translateY(3px);
+      }
+
+      /* ── Botón cerrar invitación ── */
+      .close-btn {
+        width: 100%;
+        margin-top: 32px;
+        padding: 14px 20px;
+        background: transparent;
+        border: 1px solid rgba(122, 32, 32, 0.35);
+        font-family: "Cinzel", serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        color: #8b5a2b;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 1px;
+      }
+      .close-btn:hover {
+        background: rgba(122, 32, 32, 0.06);
+        border-color: #7a2020;
+        color: #7a2020;
+      }
+      .close-btn svg {
+        width: 14px;
+        height: 14px;
+        opacity: 0.6;
       }
 
       /* ══════════════════════════════════════════
@@ -1006,6 +1231,294 @@
     </div>
     <!-- fin #ribbon-screen -->
 
+    <!-- ══════════════════════════════════════════
+     CAPA 2 — PORTADA
+══════════════════════════════════════════ -->
+    <div id="cover-screen">
+      <div class="cover-card">
+        <!-- Florales esquinas -->
+        <svg
+          class="cover-floral-tl"
+          viewBox="0 0 100 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#a0723a" stroke-width="0.6" opacity="0.5">
+            <path d="M0 60 Q30 40 55 25" />
+            <path d="M0 75 Q20 55 40 40" />
+            <ellipse
+              cx="50"
+              cy="28"
+              rx="9"
+              ry="5"
+              transform="rotate(-25 50 28)"
+              fill="#d4b896"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <ellipse
+              cx="35"
+              cy="42"
+              rx="7"
+              ry="4"
+              transform="rotate(-15 35 42)"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <circle cx="58" cy="22" r="3.5" fill="#c9a87c" opacity="0.7" />
+            <circle
+              cx="20"
+              cy="62"
+              r="5"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <circle cx="20" cy="62" r="3" fill="#d4a870" />
+          </g>
+        </svg>
+        <svg
+          class="cover-floral-tr"
+          viewBox="0 0 100 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#a0723a" stroke-width="0.6" opacity="0.5">
+            <path d="M0 60 Q30 40 55 25" />
+            <path d="M0 75 Q20 55 40 40" />
+            <ellipse
+              cx="50"
+              cy="28"
+              rx="9"
+              ry="5"
+              transform="rotate(-25 50 28)"
+              fill="#d4b896"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <ellipse
+              cx="35"
+              cy="42"
+              rx="7"
+              ry="4"
+              transform="rotate(-15 35 42)"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <circle cx="58" cy="22" r="3.5" fill="#c9a87c" opacity="0.7" />
+            <circle
+              cx="20"
+              cy="62"
+              r="5"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.4"
+            />
+            <circle cx="20" cy="62" r="3" fill="#d4a870" />
+          </g>
+        </svg>
+
+        <!-- Sello pequeño -->
+        <svg
+          class="cover-sello"
+          viewBox="0 0 52 52"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="26" cy="26" r="24" fill="#e8c170" opacity="0.9" />
+          <circle cx="26" cy="26" r="21" fill="#d4a84b" opacity="0.8" />
+          <circle cx="26" cy="26" r="18" fill="#c9973d" opacity="0.85" />
+          <text
+            x="26"
+            y="23"
+            text-anchor="middle"
+            font-family="Cinzel,serif"
+            font-size="8"
+            fill="#fdf6ee"
+            font-weight="500"
+          >
+            A
+          </text>
+          <text
+            x="26"
+            y="31"
+            text-anchor="middle"
+            font-family="Cinzel,serif"
+            font-size="6"
+            fill="#fdf6ee"
+            opacity="0.8"
+          >
+            &amp;
+          </text>
+          <text
+            x="26"
+            y="39"
+            text-anchor="middle"
+            font-family="Cinzel,serif"
+            font-size="8"
+            fill="#fdf6ee"
+            font-weight="500"
+          >
+            W
+          </text>
+        </svg>
+
+        <!-- Iniciales grandes -->
+        <div class="cover-initials">
+          <span>A</span>
+          <span class="cover-initials-sep">|</span>
+          <span>W</span>
+        </div>
+
+        <p class="cover-names-sub">Astrid &amp; Waldir</p>
+
+        <div class="cover-divider">
+          <div class="cover-divider-line"></div>
+          <svg viewBox="0 0 14 14" fill="none">
+            <path
+              d="M7 1 Q8 4 11 4 Q8 6 10 9 Q7 7 4 9 Q6 6 3 4 Q6 4 7 1Z"
+              fill="#c9a87c"
+              opacity="0.7"
+            />
+          </svg>
+          <div class="cover-divider-line"></div>
+        </div>
+
+        <p class="cover-date">18 · 07 · 26</p>
+        <p class="cover-day">Sábado &nbsp;|&nbsp; 6:30 hrs.</p>
+
+        <!-- Ilustración botánica central -->
+        <svg
+          class="cover-botanical"
+          viewBox="0 0 130 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#a0723a" stroke-width="0.7" opacity="0.55">
+            <!-- Tallo central -->
+            <path d="M65 95 Q63 70 60 50 Q57 30 55 15" />
+            <!-- Ramitas izquierda -->
+            <path d="M60 50 Q45 42 35 38" />
+            <path d="M59 60 Q44 55 32 54" />
+            <path d="M61 40 Q50 30 44 22" />
+            <!-- Ramitas derecha -->
+            <path d="M60 50 Q72 40 82 34" />
+            <path d="M59 62 Q74 56 86 52" />
+            <path d="M61 38 Q72 28 80 20" />
+            <!-- Florecitas izquierda -->
+            <circle
+              cx="35"
+              cy="38"
+              r="3"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="35" cy="38" r="1.5" fill="#c9a87c" />
+            <circle
+              cx="32"
+              cy="54"
+              r="3"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="32" cy="54" r="1.5" fill="#c9a87c" />
+            <circle
+              cx="44"
+              cy="22"
+              r="2.5"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="44" cy="22" r="1.2" fill="#c9a87c" />
+            <circle
+              cx="55"
+              cy="15"
+              r="3.5"
+              fill="#d4b896"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="55" cy="15" r="1.8" fill="#c9a87c" />
+            <!-- Florecitas derecha -->
+            <circle
+              cx="82"
+              cy="34"
+              r="3"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="82" cy="34" r="1.5" fill="#c9a87c" />
+            <circle
+              cx="86"
+              cy="52"
+              r="3"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="86" cy="52" r="1.5" fill="#c9a87c" />
+            <circle
+              cx="80"
+              cy="20"
+              r="2.5"
+              fill="#e8c8a0"
+              stroke="#a0723a"
+              stroke-width="0.5"
+            />
+            <circle cx="80" cy="20" r="1.2" fill="#c9a87c" />
+            <!-- Hojas -->
+            <ellipse
+              cx="50"
+              cy="44"
+              rx="6"
+              ry="3"
+              transform="rotate(-40 50 44)"
+              fill="#d4b896"
+              stroke="#a0723a"
+              stroke-width="0.4"
+              opacity="0.6"
+            />
+            <ellipse
+              cx="72"
+              cy="44"
+              rx="6"
+              ry="3"
+              transform="rotate(40 72 44)"
+              fill="#d4b896"
+              stroke="#a0723a"
+              stroke-width="0.4"
+              opacity="0.6"
+            />
+          </g>
+        </svg>
+
+        <p class="cover-tagline">
+          Nos Casamos <span class="cover-tagline-heart">♥</span>
+        </p>
+        <p class="cover-sub-text">
+          Te invitamos a ser parte<br />de este día tan especial
+        </p>
+
+        <button class="cover-btn" id="open-invitation-btn">
+          Abrir Invitación
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <!-- ════════════════════════════════════════════
      INVITACIÓN INTERIOR
 ════════════════════════════════════════════ -->
@@ -1348,22 +1861,7 @@
                   class="photo-inner"
                   style="background: linear-gradient(145deg, #d4b896, #c09870)"
                 >
-                  JUNTOS:
                   <img src="multimedia/astrid_w.png" alt="Astrid y Waldir" />
-                  -->
-                  <svg
-                    class="photo-icon"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#5c3a1e"
-                    stroke-width="0.8"
-                  >
-                    <path
-                      d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"
-                    />
-                  </svg>
                 </div>
               </div>
               <p class="photo-caption">♡</p>
@@ -1567,6 +2065,20 @@
 
           <p class="footer-text">Para siempre</p>
           <p class="footer-date">18 · 07 · 2026</p>
+
+          <!-- ── BOTÓN CERRAR ── -->
+          <button class="close-btn" id="close-invitation-btn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            >
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+            Cerrar Invitación
+          </button>
         </div>
       </div>
     </div>
@@ -1720,42 +2232,75 @@
         createSparkles();
 
         const ribbonScreen = document.getElementById("ribbon-screen");
+        const coverScreen = document.getElementById("cover-screen");
         const invitationWrap = document.getElementById("invitation-wrap");
         const monogramWrap = document.getElementById("monogram-wrap");
+        const openInvitationBtn = document.getElementById(
+          "open-invitation-btn"
+        );
+        const closeInvitationBtn = document.getElementById(
+          "close-invitation-btn"
+        );
+        const music = document.getElementById("background-music");
 
+        // PASO 1: Lazos → Portada
         monogramWrap.addEventListener("click", () => {
           triggerBurst();
 
-          // Reproducir música desde segundo 2
-          const music = document.getElementById("background-music");
+          // Reproducir música desde segundo 2 después de tocar la primera pantalla
           if (music) {
             music.currentTime = 2;
             music.play().catch((err) => console.log("Audio play failed:", err));
           }
 
+          ribbonScreen.classList.add("fade-out");
+
+          setTimeout(() => {
+            coverScreen.classList.add("visible");
+          }, 500);
+        });
+
+        // PASO 2: Portada → Invitación completa
+        openInvitationBtn.addEventListener("click", () => {
+          // Reproducir música desde segundo 2
+
           // Permitir scroll en html y body (importante para mobile)
           document.documentElement.style.overflow = "auto";
           document.body.style.overflow = "auto";
 
-          // 1. Ocultar pantalla de lazos con fade
-          ribbonScreen.classList.add("fade-out");
+          coverScreen.classList.add("fade-out");
 
-          // 2. Mostrar invitación con pequeño delay para que el fade se sienta
           setTimeout(() => {
             invitationWrap.classList.add("visible");
             window.scrollTo(0, 0);
-          }, 300);
+          }, 400);
+        });
+
+        // CERRAR: Invitación completa → Portada
+        closeInvitationBtn.addEventListener("click", () => {
+          if (music) {
+            music.pause();
+            music.currentTime = 0;
+          }
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          document.documentElement.style.overflow = "hidden";
+          document.body.style.overflow = "hidden";
+
+          setTimeout(() => {
+            invitationWrap.classList.remove("visible");
+            coverScreen.classList.remove("fade-out");
+            coverScreen.classList.add("visible");
+          }, 400);
         });
 
         // Detener música cuando se sale de la página
         window.addEventListener("beforeunload", () => {
-          const music = document.getElementById("background-music");
           if (music) music.pause();
         });
 
         // Pausar música cuando el tab no está visible
         document.addEventListener("visibilitychange", () => {
-          const music = document.getElementById("background-music");
           if (!music) return;
           if (document.hidden) {
             music.pause();
@@ -1764,7 +2309,6 @@
 
         // Pausar música cuando se cierra o cambia de página
         window.addEventListener("pagehide", () => {
-          const music = document.getElementById("background-music");
           if (music) music.pause();
         });
       });
