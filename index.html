@@ -770,15 +770,24 @@
       playsinline
       webkit-playsinline
     >
-      <source
-        src="multimedia/Recorrido por el Museo Larco en Perú - cop.mp4"
-        type="video/mp4"
-      />
+      <source src="multimedia/centro_de_lima.mp4" type="video/mp4" />
     </video>
+    ══════════════════════════════════════ script para que se repita el video de
+    fondo ════════════════════════════════════════════
+    <script>
+      const video = document.getElementById("background-video");
 
-    <!-- ════════════════════════════════════════════
-     MÚSICA DE FONDO
-════════════════════════════════════════════ -->
+      video.addEventListener("loadedmetadata", () => {
+        video.currentTime = 5;
+      });
+
+      video.addEventListener("ended", () => {
+        video.currentTime = 5;
+        video.play();
+      });
+    </script>
+    ══════════════════════════════════════ MÚSICA DE FONDO
+    ════════════════════════════════════════════
     <audio id="background-music">
       <source
         src="multimedia/Lugar_seguro_Acoustic_Noreh_Jay_Wheeler.mp3"
@@ -1797,7 +1806,7 @@
           <div class="parents-section">
             <p class="parents-title">Padres del Novio</p>
             <p class="parent-name">
-              Carlos E. Paredes Lima<br />Lucía M. Torres Gutiérrez
+              Francisco Alberto neyra cabrera<br />Hilda Figueroa ventes
             </p>
           </div>
 
